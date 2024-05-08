@@ -1,7 +1,7 @@
-streamlit==1.22.0
-numpy==1.24.2
-opencv-python==4.7.0.72
-joblib==1.2.0
-scikit-image==0.20.0
-scikit-learn==1.2.2
-xgboost==1.7.4
+streamlit
+numpy
+opencv-python
+joblib
+scikit-image
+scikit-learn
+xgboost
