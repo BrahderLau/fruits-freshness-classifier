@@ -3,7 +3,7 @@ import numpy as np
 import cv2
 import joblib
 from skimage.feature import graycomatrix, graycoprops
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import StandardScaler
 from xgboost import XGBClassifier
 
 # Function to extract image features
@@ -39,7 +39,7 @@ def process_image(uploaded_image):
     features = extract_features(image)
 
     # Normalize the features
-    scaler = MinMaxScaler()
+    scaler = StandardScaler()
     normalized_features = scaler.fit_transform([features])
 
     return normalized_features
