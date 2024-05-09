@@ -7,6 +7,7 @@ from skimage.feature import graycomatrix, graycoprops
 import altair as alt
 import plotly.express as px
 import matplotlib.pyplot as plt
+import xgboost as xgb
 
 def create_fruit_mask(fruit_type, image):
     # Convert the image to HSV (Hue, Saturation, Value)
