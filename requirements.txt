@@ -4,4 +4,6 @@ opencv-python
 joblib
 scikit-image
 scikit-learn
-xgboost
+altair
+plotly
+matplotlib
