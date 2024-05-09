@@ -151,9 +151,9 @@ def make_donut(probability_value, input_text, input_color):
 
 # Load the pre-trained XGBoost model and Random Forest model
 
-xgb_model = joblib.load("best_xgb_model_{'gamma': 0.1, 'learning_rate': 0.1, 'max_depth': 15, 'n_estimators': 300, 'subsample': 0.8}.pkl")
+xgb_model = joblib.load("./best_xgb_model_{'gamma': 0.1, 'learning_rate': 0.1, 'max_depth': 15, 'n_estimators': 300, 'subsample': 0.8}.pkl")
 
-rf_model = joblib.load("best_rf_model_{'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 200}.pkl")
+rf_model = joblib.load("./best_rf_model_{'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 200}.pkl")
 
 # Streamlit App Layout
 
