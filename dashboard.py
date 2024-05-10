@@ -46,7 +46,7 @@ def create_fruit_mask(fruit_type, image):
     ax[0].axis('off')
     
     ax[1].imshow(final_mask, cmap='gray')
-    ax[1].set_title("Mask Visualization")
+    ax[1].set_title("Masked Image Visualization")
     ax[1].axis('off')
     st.pyplot(fig)
 
@@ -130,7 +130,7 @@ def make_donut(probability_value, input_text, input_color):
     # Add a central text inside the donut chart
     central_text = alt.Chart(pd.DataFrame({'value': [f'{probability_value:.2f}%']})).mark_text(
         align='center',
-        color="black",
+        # color='yellow',
         font="Lato",
         fontSize=20,
         fontWeight=700,
@@ -140,13 +140,14 @@ def make_donut(probability_value, input_text, input_color):
     # Add a label below the donut chart
     label = alt.Chart(pd.DataFrame({'label': [input_text]})).mark_text(
         align='center',
+        # color='yellow',
         font="Lato",
         fontSize=15,
         fontWeight=500
     ).encode(text='label:N').properties(width=130)
 
     # Concatenate donut chart and the label vertically
-    final_chart = alt.vconcat(plot + central_text, label).resolve_scale(color='independent')
+    final_chart = alt.vconcat(plot + central_text, label, spacing=5).resolve_scale(color='independent')
 
     return final_chart
 
@@ -213,17 +214,30 @@ if uploaded_image is not None:
     # Display Prediction Result
     # st.write(f"The uploaded fruit is predicted to be **{prediction_label}**.")
 
-    # Display extracted feature values
+    # Feature definitions (as a dictionary)
+    feature_definitions = {
+        "Red": "The sum of pixel values for the red color channel in the masked region.",
+        "Green": "The sum of pixel values for the green color channel in the masked region.",
+        "Blue": "The sum of pixel values for the blue color channel in the masked region.",
+        "Contrast": "The difference in intensity between neighboring pixels, indicating image texture.",
+        "Homogeneity": "The similarity of adjacent gray levels in the GLCM matrix, measuring smoothness."
+    }
+
+    # Example features
     feature_names = ["Red", "Green", "Blue", "Contrast", "Homogeneity"]
     feature_values = features_array[0]
+
+    # Create a DataFrame for display
     features_data = pd.DataFrame({
         "Feature": feature_names,
-        "Value": [f"{val:.4f}" if isinstance(val, float) else str(val) for val in feature_values]  # Formatting values
+        "Value": [f"{val:.4f}" if isinstance(val, float) else str(val) for val in feature_values],
+        "Definition": [feature_definitions[feature] for feature in feature_names]  # Add the definitions
     })
 
-    # Display the DataFrame as a table in Streamlit
-    st.write("Extracted Features:")
+    # Display extracted features and their definitions in a table
+    st.write("Extracted Features with Definitions:")
     st.table(features_data)
+
 
 st.subheader("Manual Fruit Freshness Classifier")
 st.write("Manually enter feature values to analyze if the fruit is fresh or rotten.")
@@ -268,12 +282,26 @@ if st.button("Predict Freshness"):
 
     # Display extracted feature values
     feature_names = ["Red", "Green", "Blue", "Contrast", "Homogeneity"]
+    # Feature definitions (as a dictionary)
+    feature_definitions = {
+        "Red": "The sum of pixel values for the red color channel in the masked region.",
+        "Green": "The sum of pixel values for the green color channel in the masked region.",
+        "Blue": "The sum of pixel values for the blue color channel in the masked region.",
+        "Contrast": "The difference in intensity between neighboring pixels, indicating image texture.",
+        "Homogeneity": "The similarity of adjacent gray levels in the GLCM matrix, measuring smoothness."
+    }
+
+    # Example features
+    feature_names = ["Red", "Green", "Blue", "Contrast", "Homogeneity"]
     feature_values = features_array[0]
+
+    # Create a DataFrame for display
     features_data = pd.DataFrame({
         "Feature": feature_names,
-        "Value": [f"{val:.4f}" if isinstance(val, float) else str(val) for val in feature_values]  # Formatting values
+        "Value": [f"{val:.4f}" if isinstance(val, float) else str(val) for val in feature_values],
+        "Definition": [feature_definitions[feature] for feature in feature_names]  # Add the definitions
     })
 
-    # Display the DataFrame as a table in Streamlit
-    st.write("Extracted Features:")
+    # Display extracted features and their definitions in a table
+    st.write("Extracted Features with Definitions:")
     st.table(features_data)

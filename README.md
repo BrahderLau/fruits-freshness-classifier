@@ -19,9 +19,9 @@ Definitions:
    - Green: Total colour on the Green Channel
    - Blue: Total colour on the Blue Channel
 - Picture Intensity (Contrast): A component of texture analysis, indicating the degree of brightness or darkness in the image.
+- Overall Energy: A measure of the aggregate visual intensity and vibrancy present in the image.
 - Pixel Correlation: An assessment of the interdependence and relationship between adjacent pixels in the image.
 - Homogeneity: An evaluation of the uniformity and consistency of visual elements throughout the image.
-- Overall Energy: A measure of the aggregate visual intensity and vibrancy present in the image.
 
 Methodology:
 
