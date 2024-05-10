@@ -2,6 +2,8 @@
 
 [Dashboard Link](https://fruits-freshness-classifier.streamlit.app/) 
 
+[Github Repo Link](https://github.com/BrahderLau/fruits-freshness-classifier) 
+
 # Executive Summary
 
 Problem Statement:
