@@ -147,7 +147,7 @@ def make_donut(probability_value, input_text, input_color):
     ).encode(text='label:N').properties(width=130)
 
     # Concatenate donut chart and the label vertically
-    final_chart = alt.vconcat(plot + central_text, label, spacing=5).resolve_scale(color='independent')
+    final_chart = alt.vconcat(plot + central_text, label, spacing=1).resolve_scale(color='independent')
 
     return final_chart
 
